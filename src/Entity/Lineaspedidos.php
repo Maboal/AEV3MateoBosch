@@ -15,7 +15,7 @@ class Lineaspedidos
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'lineaspedidos')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name:'id_pedido', nullable: false, referencedColumnName:'id')]
     private ?Pedidos $id_pedido = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
@@ -33,12 +33,12 @@ class Lineaspedidos
         return $this->id;
     }
 
-    public function getIdPedido(): ?Pedidos
+    public function getPedido(): ?Pedidos
     {
         return $this->id_pedido;
     }
 
-    public function setIdPedido(?Pedidos $id_pedido): self
+    public function setPedido(?Pedidos $id_pedido): self
     {
         $this->id_pedido = $id_pedido;
 
@@ -69,12 +69,12 @@ class Lineaspedidos
         return $this;
     }
 
-    public function getIdProducto(): ?Productos
+    public function getProducto(): ?Productos
     {
         return $this->id_producto;
     }
 
-    public function setIdProducto(?Productos $id_producto): self
+    public function setProducto(?Productos $id_producto): self
     {
         $this->id_producto = $id_producto;
 
