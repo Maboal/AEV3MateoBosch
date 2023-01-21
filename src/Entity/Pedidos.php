@@ -82,12 +82,12 @@ class Pedidos
         return $this;
     }
 
-    public function getIdEmpresa(): ?Empresas
+    public function getEmpresa(): ?Empresas
     {
         return $this->id_empresa;
     }
 
-    public function setIdEmpresa(?Empresas $id_empresa): self
+    public function setEmpresa(?Empresas $id_empresa): self
     {
         $this->id_empresa = $id_empresa;
 
