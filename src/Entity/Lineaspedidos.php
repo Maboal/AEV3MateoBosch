@@ -25,7 +25,7 @@ class Lineaspedidos
     private ?string $precio = null;
 
     #[ORM\ManyToOne(inversedBy: 'lineaspedidos')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name:'id_producto', nullable: false, referencedColumnName:'id')]
     private ?Productos $id_producto = null;
 
     public function getId(): ?int

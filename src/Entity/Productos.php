@@ -35,7 +35,7 @@ class Productos
     private Collection $stocks;
 
     #[ORM\ManyToOne(inversedBy: 'productos')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name:'id_almacen', nullable: false, referencedColumnName:'id')]
     private ?Almacenes $id_almacen = null;
 
     public function __construct()

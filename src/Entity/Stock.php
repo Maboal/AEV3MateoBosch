@@ -18,7 +18,7 @@ class Stock
     private ?\DateTimeInterface $fecha = null;
 
     #[ORM\ManyToOne(inversedBy: 'stocks')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name:'id_producto', nullable: false, referencedColumnName:'id')]
     private ?Productos $id_producto = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 6, scale: 2)]
@@ -34,7 +34,7 @@ class Stock
     private ?string $unidad = null;
 
     #[ORM\ManyToOne(inversedBy: 'stocks')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name:'id_almacen', nullable: false, referencedColumnName:'id')]
     private ?Almacenes $id_almacen = null;
 
     public function getId(): ?int
