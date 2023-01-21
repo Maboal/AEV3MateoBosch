@@ -26,7 +26,7 @@ class Pedidos
     private ?string $observacion = null;
 
     #[ORM\ManyToOne(inversedBy: 'pedidos')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name:'id_empresa', nullable: false, referencedColumnName:'id')]
     private ?Empresas $id_empresa = null;
 
     #[ORM\OneToMany(mappedBy: 'id_pedido', targetEntity: Facturas::class)]
@@ -106,7 +106,7 @@ class Pedidos
     {
         if (!$this->facturas->contains($factura)) {
             $this->facturas->add($factura);
-            $factura->setIdPedido($this);
+            $factura->setPedido($this);
         }
 
         return $this;
@@ -116,8 +116,8 @@ class Pedidos
     {
         if ($this->facturas->removeElement($factura)) {
             // set the owning side to null (unless already changed)
-            if ($factura->getIdPedido() === $this) {
-                $factura->setIdPedido(null);
+            if ($factura->getPedido() === $this) {
+                $factura->setPedido(null);
             }
         }
 

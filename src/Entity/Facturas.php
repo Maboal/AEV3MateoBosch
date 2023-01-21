@@ -24,7 +24,7 @@ class Facturas
     private ?string $valor = null;
 
     #[ORM\ManyToOne(inversedBy: 'facturas')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name:'id_pedido', nullable: false, referencedColumnName:'id')]
     private ?Pedidos $id_pedido = null;
 
     public function getId(): ?int
@@ -68,12 +68,12 @@ class Facturas
         return $this;
     }
 
-    public function getIdPedido(): ?Pedidos
+    public function getPedido(): ?Pedidos
     {
         return $this->id_pedido;
     }
 
-    public function setIdPedido(?Pedidos $id_pedido): self
+    public function setPedido(?Pedidos $id_pedido): self
     {
         $this->id_pedido = $id_pedido;
 
