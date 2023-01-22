@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Almacenes
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
@@ -39,6 +38,13 @@ class Almacenes
     public function getId(): ?int
     {
         return $this->id;
+    }
+    
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getNombre(): ?string
@@ -119,7 +125,7 @@ class Almacenes
     {
         if (!$this->productos->contains($producto)) {
             $this->productos->add($producto);
-            $producto->setIdAlmacen($this);
+            $producto->setAlmacen($this);
         }
 
         return $this;
@@ -129,11 +135,14 @@ class Almacenes
     {
         if ($this->productos->removeElement($producto)) {
             // set the owning side to null (unless already changed)
-            if ($producto->getIdAlmacen() === $this) {
-                $producto->setIdAlmacen(null);
+            if ($producto->getAlmacen() === $this) {
+                $producto->setAlmacen(null);
             }
         }
 
         return $this;
     }
+
+
+
 }

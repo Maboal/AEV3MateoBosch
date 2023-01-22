@@ -54,12 +54,12 @@ class Stock
         return $this;
     }
 
-    public function getIdProducto(): ?Productos
+    public function getProducto(): ?Productos
     {
         return $this->id_producto;
     }
 
-    public function setIdProducto(?Productos $id_producto): self
+    public function setProducto(?Productos $id_producto): self
     {
         $this->id_producto = $id_producto;
 
@@ -114,12 +114,12 @@ class Stock
         return $this;
     }
 
-    public function getIdAlmacen(): ?Almacenes
+    public function getAlmacen(): ?Almacenes
     {
         return $this->id_almacen;
     }
 
-    public function setIdAlmacen(?Almacenes $id_almacen): self
+    public function setAlmacen(?Almacenes $id_almacen): self
     {
         $this->id_almacen = $id_almacen;
 
