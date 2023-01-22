@@ -19,12 +19,26 @@ class MainController extends AbstractController
                     "name": "empresas",
                     "asociada": {
                         "1" : "pedidos"
+                    },
+                    "rutas":{
+                        "show_all":"empresas/",
+                        "show_one":"empresas/{id}",
+                        "new":"empresas/new",
+                        "edit":"empresas/edit/{id}",
+                        "delete":"empresas/delete/{id}"
                     }
                 },
                 {
                     "name": "facturas",
                     "asociada": {
                         "1" : "pedidos"
+                    },
+                    "rutas":{
+                        "show_all":"facturas/",
+                        "show_one":"facturas/{id}",
+                        "new":"facturas/new",
+                        "edit":"facturas/edit/{id}",
+                        "delete":"facturas/delete/{id}"
                     }
                 },
                 {
@@ -32,6 +46,13 @@ class MainController extends AbstractController
                     "asociada": {
                         "1" : "empresas",
                         "2" : "facturas"
+                    },
+                    "rutas":{
+                        "show_all":"pedidos/",
+                        "show_one":"pedidos/{id}",
+                        "new":"pedidos/new",
+                        "edit":"pedidos/edit/{id}",
+                        "delete":"pedidos/delete/{id}"
                     }
                 },
                 {
@@ -39,6 +60,13 @@ class MainController extends AbstractController
                     "asociada": {
                         "1" : "pedidos",
                         "2" : "productos"
+                    },
+                    "rutas":{
+                        "show_all":"lineaspedidos/",
+                        "show_one":"lineaspedidos/{id}",
+                        "new":"lineaspedidos/new",
+                        "edit":"lineaspedidos/edit/{id}",
+                        "delete":"lineaspedidos/delete/{id}"
                     }
                 },
                 {
@@ -47,6 +75,13 @@ class MainController extends AbstractController
                         "1" : "lineaspedidos",
                         "2" : "almacenes",
                         "3" : "stock"
+                    },
+                    "rutas":{
+                        "show_all":"productos/",
+                        "show_one":"productos/{id}",
+                        "new":"productos/new",
+                        "edit":"productos/edit/{id}",
+                        "delete":"productos/delete/{id}"
                     }
                 },
                 {
@@ -54,6 +89,13 @@ class MainController extends AbstractController
                     "asociada": {
                         "1" : "productos",
                         "2" : "stock"
+                    },
+                    "rutas":{
+                        "show_all":"almacenes/",
+                        "show_one":"almacenes/{id}",
+                        "new":"almacenes/new",
+                        "edit":"almacenes/edit/{id}",
+                        "delete":"almacenes/delete/{id}"
                     }
                 },
                 {
@@ -61,6 +103,13 @@ class MainController extends AbstractController
                     "asociada": {
                         "1" : "productos",
                         "2" : "almacenes"  
+                    },
+                    "rutas":{
+                        "show_all":"stock/",
+                        "show_one":"stock/{id}",
+                        "new":"stock/new",
+                        "edit":"stock/edit/{id}",
+                        "delete":"stock/delete/{id}"
                     }
                 }
             ]
