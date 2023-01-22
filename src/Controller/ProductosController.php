@@ -56,7 +56,7 @@ class ProductosController extends AbstractController
         return new JsonResponse($data, Response::HTTP_OK);
     }
 
-    #[Route('/new', name:'AEV_productos_new', methods: ['POST'])]
+    #[Route('/new', name:'AEV3_productos_new', methods: ['POST'])]
     public function add(Request $request): JsonResponse
     {   
         $data = json_decode($request->getContent());
