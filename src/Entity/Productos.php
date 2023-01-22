@@ -109,7 +109,7 @@ class Productos
     {
         if (!$this->lineaspedidos->contains($lineaspedido)) {
             $this->lineaspedidos->add($lineaspedido);
-            $lineaspedido->setIdProducto($this);
+            $lineaspedido->setProducto($this);
         }
 
         return $this;
@@ -119,8 +119,8 @@ class Productos
     {
         if ($this->lineaspedidos->removeElement($lineaspedido)) {
             // set the owning side to null (unless already changed)
-            if ($lineaspedido->getIdProducto() === $this) {
-                $lineaspedido->setIdProducto(null);
+            if ($lineaspedido->getProducto() === $this) {
+                $lineaspedido->setProducto(null);
             }
         }
 
@@ -157,12 +157,12 @@ class Productos
         return $this;
     }
 
-    public function getIdAlmacen(): ?Almacenes
+    public function getAlmacen(): ?Almacenes
     {
         return $this->id_almacen;
     }
 
-    public function setIdAlmacen(?Almacenes $id_almacen): self
+    public function setAlmacen(?Almacenes $id_almacen): self
     {
         $this->id_almacen = $id_almacen;
 
