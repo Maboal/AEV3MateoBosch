@@ -139,7 +139,7 @@ class Productos
     {
         if (!$this->stocks->contains($stock)) {
             $this->stocks->add($stock);
-            $stock->setIdProducto($this);
+            $stock->setProducto($this);
         }
 
         return $this;
@@ -149,8 +149,8 @@ class Productos
     {
         if ($this->stocks->removeElement($stock)) {
             // set the owning side to null (unless already changed)
-            if ($stock->getIdProducto() === $this) {
-                $stock->setIdProducto(null);
+            if ($stock->getProducto() === $this) {
+                $stock->setProducto(null);
             }
         }
 

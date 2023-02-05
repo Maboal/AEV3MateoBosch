@@ -85,7 +85,7 @@ class Empresas
     {
         if (!$this->pedidos->contains($pedido)) {
             $this->pedidos->add($pedido);
-            $pedido->setIdEmpresa($this);
+            $pedido->setEmpresa($this);
         }
 
         return $this;
@@ -95,8 +95,8 @@ class Empresas
     {
         if ($this->pedidos->removeElement($pedido)) {
             // set the owning side to null (unless already changed)
-            if ($pedido->getIdEmpresa() === $this) {
-                $pedido->setIdEmpresa(null);
+            if ($pedido->getEmpresa() === $this) {
+                $pedido->setEmpresa(null);
             }
         }
 

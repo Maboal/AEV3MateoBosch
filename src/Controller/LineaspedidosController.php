@@ -38,8 +38,14 @@ class LineaspedidosController extends AbstractController
         
         foreach ($lineaspedidos as $lineaspedido){
             $data[] = [
-                'id_pedido' => $lineaspedido->getPedido()->getId(),
-                'id_producto' => $lineaspedido->getProducto()->getId(),
+                'pedido' =>[
+                  'pedido_id' => $lineaspedido->getPedido()->getId(),
+                  'pedido_observacion' =>$lineaspedido->getPedido()->getObservacion()
+                ], 
+                'producto' =>[
+                    'producto_id' => $lineaspedido->getProducto()->getId(),
+                    'producto_descripcion' => $lineaspedido->getProducto()->getDescripcion()
+                ], 
                 'cantidad' => $lineaspedido->getCantidad(),
                 'precio' => $lineaspedido->getPrecio()
             ];
@@ -51,8 +57,14 @@ class LineaspedidosController extends AbstractController
     public function show(Lineaspedidos $lineaspedido):JsonResponse
     {
         $data[] = [
-            'id_pedido' => $lineaspedido->getPedido()->getId(),
-            'id_producto' => $lineaspedido->getProducto()->getId(),
+            'pedido' =>[
+              'pedido_id' => $lineaspedido->getPedido()->getId(),
+              'pedido_observacion' =>$lineaspedido->getPedido()->getObservacion()
+            ], 
+            'producto' =>[
+                'producto_id' => $lineaspedido->getProducto()->getId(),
+                'producto_descripcion' => $lineaspedido->getProducto()->getDescripcion()
+            ], 
             'cantidad' => $lineaspedido->getCantidad(),
             'precio' => $lineaspedido->getPrecio()
         ];

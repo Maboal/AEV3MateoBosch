@@ -32,13 +32,32 @@ class ProductosController extends AbstractController
         $data = [];
         
         foreach ($productos as $producto){
-            $data[] = [
-                'descripcion' => $producto->getDescripcion(),
-                'id_almacen' => $producto->getAlmacen()->getId(),
-                'unidad' => $producto->getUnidad(),
-                'clasificacion' => $producto->getClasificacion(),
-                'preciounidad' => $producto->getPreciounidad()
-            ];
+            foreach($producto->getLineaspedidos() as $lineaspedido ){
+                foreach($producto->getStocks() as $stock){
+                    $data[] = [
+                        'descripcion' => $producto->getDescripcion(),
+                        'almacen' => [
+                            'almacen_id' => $producto->getAlmacen()->getId(),
+                            'almacen_nombre' => $producto->getAlmacen()->getNombre(),
+                            'almacen_localizacion' => $producto->getAlmacen()->getLocalizacion(),
+                        ], 
+                        'unidad' => $producto->getUnidad(),
+                        'clasificacion' => $producto->getClasificacion(),
+                        'preciounidad' => $producto->getPreciounidad(),
+                        'lineaspedido' => [
+                            'lineaspedido_id' => $lineaspedido->getId(),
+                            'lineaspedido_cantidad' => $lineaspedido->getCantidad(),
+                            'lineaspedido_precio' => $lineaspedido->getPrecio(),
+                        ],
+                        'stock' => [
+                            'stock_id' => $stock->getId(),
+                            'stock_cantidad' => $stock->getCantidad(),
+                            'stock_precio' => $stock->getPrecio(),
+                            'stock_unidad' => $stock->getUnidad(),
+                        ]
+                    ];
+                }
+            }
         }
         return new JsonResponse($data, Response::HTTP_OK);
     }
@@ -46,13 +65,32 @@ class ProductosController extends AbstractController
     #[Route('/{id}', name:'AEV3_productos_show', methods:['GET'])]
     public function show(Productos $producto):JsonResponse
     {
-        $data[] = [
-            'descripcion' => $producto->getDescripcion(),
-            'id_almacen' => $producto->getAlmacen()->getId(),
-            'unidad' => $producto->getUnidad(),
-            'clasificacion' => $producto->getClasificacion(),
-            'preciounidad' => $producto->getPreciounidad()
-        ];
+        foreach($producto->getLineaspedidos() as $lineaspedido ){
+            foreach($producto->getStocks() as $stock){
+                $data[] = [
+                    'descripcion' => $producto->getDescripcion(),
+                    'almacen' => [
+                        'almacen_id' => $producto->getAlmacen()->getId(),
+                        'almacen_nombre' => $producto->getAlmacen()->getNombre(),
+                        'almacen_localizacion' => $producto->getAlmacen()->getLocalizacion(),
+                    ], 
+                    'unidad' => $producto->getUnidad(),
+                    'clasificacion' => $producto->getClasificacion(),
+                    'preciounidad' => $producto->getPreciounidad(),
+                    'lineaspedido' => [
+                        'lineaspedido_id' => $lineaspedido->getId(),
+                        'lineaspedido_cantidad' => $lineaspedido->getCantidad(),
+                        'lineaspedido_precio' => $lineaspedido->getPrecio(),
+                    ],
+                    'stock' => [
+                        'stock_id' => $stock->getId(),
+                        'stock_cantidad' => $stock->getCantidad(),
+                        'stock_precio' => $stock->getPrecio(),
+                        'stock_unidad' => $stock->getUnidad(),
+                    ]
+                ];
+            }
+        }
         return new JsonResponse($data, Response::HTTP_OK);
     }
 

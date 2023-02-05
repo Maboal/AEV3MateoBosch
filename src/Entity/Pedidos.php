@@ -136,7 +136,7 @@ class Pedidos
     {
         if (!$this->lineaspedidos->contains($lineaspedido)) {
             $this->lineaspedidos->add($lineaspedido);
-            $lineaspedido->setIdPedido($this);
+            $lineaspedido->setPedido($this);
         }
 
         return $this;
@@ -146,8 +146,8 @@ class Pedidos
     {
         if ($this->lineaspedidos->removeElement($lineaspedido)) {
             // set the owning side to null (unless already changed)
-            if ($lineaspedido->getIdPedido() === $this) {
-                $lineaspedido->setIdPedido(null);
+            if ($lineaspedido->getPedido() === $this) {
+                $lineaspedido->setPedido(null);
             }
         }
 

@@ -37,12 +37,20 @@ class StockController extends AbstractController
         foreach ($stocks as $stock){
             $data[] = [
                 'fecha' => $stock->getFecha(),
-                'id_producto' => $stock->getProducto()->getId(),
+                'producto' =>[
+                    'producto_id' => $stock->getProducto()->getId(),
+                    'producto_descripcion' => $stock->getProducto()->getDescripcion(),
+                    'producto_preciounidad' => $stock->getProducto()->getPreciounidad()
+                ], 
                 'cantidad' => $stock->getCantidad(),
                 'stock' => $stock->getStock(),
                 'precio' => $stock->getPrecio(),
                 'unidad' => $stock->getUnidad(),
-                'id_almacen' => $stock->getAlmacen()->getId()
+                'almacen' =>[
+                    'almacen_id' => $stock->getAlmacen()->getId(),
+                    'almacen_nombre' => $stock->getAlmacen()->getNombre(),
+                    'almacen_localizacion' => $stock->getAlmacen()->getLocalizacion()
+                ] 
             ];
         }
         return new JsonResponse($data, Response::HTTP_OK);
@@ -53,12 +61,20 @@ class StockController extends AbstractController
     {
         $data[] = [
             'fecha' => $stock->getFecha(),
-            'id_producto' => $stock->getProducto()->getId(),
+            'producto' =>[
+                'producto_id' => $stock->getProducto()->getId(),
+                'producto_descripcion' => $stock->getProducto()->getDescripcion(),
+                'producto_preciounidad' => $stock->getProducto()->getPreciounidad()
+            ], 
             'cantidad' => $stock->getCantidad(),
             'stock' => $stock->getStock(),
             'precio' => $stock->getPrecio(),
             'unidad' => $stock->getUnidad(),
-            'id_almacen' => $stock->getAlmacen()->getId()
+            'almacen' =>[
+                'almacen_id' => $stock->getAlmacen()->getId(),
+                'almacen_nombre' => $stock->getAlmacen()->getNombre(),
+                'almacen_localizacion' => $stock->getAlmacen()->getLocalizacion()
+            ] 
         ];
         return new JsonResponse($data, Response::HTTP_OK);
     }

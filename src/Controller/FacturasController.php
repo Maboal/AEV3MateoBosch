@@ -37,7 +37,10 @@ class FacturasController extends AbstractController
                 'fecha' => $factura->getFecha(),
                 'tipo' => $factura->getTipo(),
                 'valor' => $factura->getValor(),
-                'id_pedido' => $factura->getPedido()->getId()
+                'pedidos' => [
+                    'pedido_id' => $factura->getPedido()->getId(),
+                    'pedido_observacion' => $factura->getPedido()->getObservacion()
+                ]
             ];
         }
 
@@ -51,7 +54,10 @@ class FacturasController extends AbstractController
             'fecha' => $factura->getFecha(),
             'tipo' => $factura->getTipo(),
             'valor' => $factura->getValor(),
-            'id_pedido' => $factura->getPedido()->getId()
+            'pedidos' => [
+                'pedido_id' => $factura->getPedido()->getId(),
+                'pedido_observacion' => $factura->getPedido()->getObservacion()
+            ]
         ];
         return new JsonResponse($data, Response::HTTP_OK);
     }
