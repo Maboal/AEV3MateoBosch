@@ -95,7 +95,7 @@ class Almacenes
     {
         if (!$this->stocks->contains($stock)) {
             $this->stocks->add($stock);
-            $stock->setIdAlmacen($this);
+            $stock->setAlmacen($this);
         }
 
         return $this;
@@ -105,8 +105,8 @@ class Almacenes
     {
         if ($this->stocks->removeElement($stock)) {
             // set the owning side to null (unless already changed)
-            if ($stock->getIdAlmacen() === $this) {
-                $stock->setIdAlmacen(null);
+            if ($stock->getAlmacen() === $this) {
+                $stock->setAlmacen(null);
             }
         }
 
